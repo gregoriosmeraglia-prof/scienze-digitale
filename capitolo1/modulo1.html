@@ -2,205 +2,925 @@
 <html lang="it">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Modulo 1 - Dalton e Thomson</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<style>
+    <meta
+        name="description"
+        content="Modulo didattico dedicato a Dalton, alla natura elettrica della materia, alla legge di Coulomb e alla scoperta delle particelle subatomiche."
+    >
 
-body{
-    font-family: Arial, sans-serif;
-    margin:0;
-    background:#f5f7fa;
-    color:#333;
-}
+    <title>Modulo 1 | Da Dalton a Thomson</title>
 
-header{
-    background:linear-gradient(135deg,#1565c0,#42a5f5);
-    color:white;
-    padding:50px;
-    text-align:center;
-}
+    <style>
+        :root {
+            --blu-scuro: #0d47a1;
+            --blu: #1565c0;
+            --blu-chiaro: #42a5f5;
+            --sfondo: #f4f7fb;
+            --bianco: #ffffff;
+            --testo: #263238;
+            --testo-secondario: #546e7a;
+            --bordo: #d9e4ee;
+            --evidenza: #e3f2fd;
+            --attenzione: #fff8e1;
+            --successo: #e8f5e9;
+            --ombra: 0 4px 16px rgba(13, 71, 161, 0.12);
+            --raggio: 14px;
+        }
 
-header h1{
-    margin-bottom:10px;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-header h2{
-    color:white;
-    margin-bottom:20px;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
-}
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--sfondo);
+            color: var(--testo);
+            line-height: 1.7;
+        }
 
-.card{
-    background:white;
-    margin:20px 0;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,0.1);
-}
+        a {
+            color: var(--blu);
+        }
 
-h2{
-    color:#1565c0;
-}
+        a:focus,
+        button:focus {
+            outline: 3px solid #ffca28;
+            outline-offset: 3px;
+        }
 
-.timeline{
-    border-left:4px solid #1565c0;
-    padding-left:20px;
-}
+        header {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blu-scuro),
+                    var(--blu-chiaro)
+                );
+            color: var(--bianco);
+            padding: 56px 20px 48px;
+            text-align: center;
+        }
 
-.timeline div{
-    margin:20px 0;
-}
+        header h1 {
+            margin: 0 0 8px;
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
 
-.back{
-    display:inline-block;
-    margin-top:15px;
-    padding:10px 20px;
-    background:white;
-    color:#1565c0;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
-}
+        header h2 {
+            margin: 0 0 16px;
+            color: var(--bianco);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+        }
 
-.back:hover{
-    background:#e3f2fd;
-}
+        header p {
+            max-width: 760px;
+            margin: 0 auto 24px;
+            font-size: 1.1rem;
+        }
 
-ul{
-    line-height:1.8;
-}
+        .back {
+            display: inline-block;
+            padding: 11px 20px;
+            background: var(--bianco);
+            color: var(--blu-scuro);
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: 700;
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
 
-.highlight{
-    background:#e3f2fd;
-    padding:15px;
-    border-radius:10px;
-}
+        .back:hover {
+            background: var(--evidenza);
+            transform: translateY(-2px);
+        }
 
-footer{
-    background:#1565c0;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-}
+        .top-navigation {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid var(--bordo);
+            box-shadow: 0 2px 8px rgba(38, 50, 56, 0.08);
+        }
 
-</style>
+        .top-navigation ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 12px 16px;
+            list-style: none;
+        }
 
+        .top-navigation a {
+            display: block;
+            padding: 7px 11px;
+            color: var(--blu-scuro);
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .top-navigation a:hover {
+            background: var(--evidenza);
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 26px 0 50px;
+        }
+
+        .card {
+            margin: 22px 0;
+            padding: 28px;
+            background: var(--bianco);
+            border: 1px solid var(--bordo);
+            border-radius: var(--raggio);
+            box-shadow: var(--ombra);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: var(--blu);
+            line-height: 1.3;
+        }
+
+        .card h3 {
+            color: var(--blu-scuro);
+        }
+
+        .card p:last-child,
+        .card ul:last-child,
+        .card ol:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-grid,
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .mini-card {
+            padding: 20px;
+            background: #f8fbfe;
+            border: 1px solid var(--bordo);
+            border-radius: 11px;
+        }
+
+        .mini-card h3 {
+            margin-top: 0;
+        }
+
+        ul,
+        ol {
+            padding-left: 24px;
+        }
+
+        li + li {
+            margin-top: 5px;
+        }
+
+        .highlight {
+            margin: 16px 0;
+            padding: 18px;
+            background: var(--evidenza);
+            border-left: 5px solid var(--blu);
+            border-radius: 10px;
+        }
+
+        .attention {
+            margin: 16px 0;
+            padding: 18px;
+            background: var(--attenzione);
+            border-left: 5px solid #f9a825;
+            border-radius: 10px;
+        }
+
+        .success {
+            margin: 16px 0;
+            padding: 18px;
+            background: var(--successo);
+            border-left: 5px solid #388e3c;
+            border-radius: 10px;
+        }
+
+        .formula {
+            margin: 18px 0;
+            padding: 22px;
+            overflow-x: auto;
+            background: #eef6ff;
+            border: 2px solid #90caf9;
+            border-radius: 12px;
+            color: var(--blu-scuro);
+            text-align: center;
+            font-size: clamp(1.25rem, 4vw, 1.8rem);
+            font-weight: 700;
+        }
+
+        .timeline {
+            position: relative;
+            margin-left: 10px;
+            padding-left: 28px;
+            border-left: 4px solid var(--blu);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 0 0 24px;
+            padding: 0 0 0 8px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            top: 7px;
+            left: -40px;
+            width: 14px;
+            height: 14px;
+            background: var(--bianco);
+            border: 4px solid var(--blu);
+            border-radius: 50%;
+        }
+
+        .timeline-item strong {
+            color: var(--blu-scuro);
+        }
+
+        .comparison {
+            width: 100%;
+            margin-top: 16px;
+            border-collapse: collapse;
+        }
+
+        .comparison th,
+        .comparison td {
+            padding: 12px;
+            border: 1px solid var(--bordo);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .comparison th {
+            background: var(--blu);
+            color: var(--bianco);
+        }
+
+        .comparison tr:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        .page-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 11px 18px;
+            background: var(--blu);
+            color: var(--bianco);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .button:hover {
+            background: var(--blu-scuro);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 25px 18px;
+            background: var(--blu-scuro);
+            color: var(--bianco);
+            text-align: center;
+        }
+
+        footer p {
+            margin: 4px 0;
+        }
+
+        @media (max-width: 760px) {
+            header {
+                padding: 42px 18px 38px;
+            }
+
+            .container {
+                width: min(100% - 20px, 1120px);
+            }
+
+            .card {
+                padding: 21px;
+            }
+
+            .intro-grid,
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .top-navigation {
+                position: static;
+            }
+
+            .top-navigation ul {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+            }
+
+            .top-navigation a {
+                white-space: nowrap;
+            }
+
+            .comparison {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .page-actions {
+                flex-direction: column;
+            }
+
+            .button {
+                text-align: center;
+            }
+        }
+
+        @media print {
+            body {
+                background: var(--bianco);
+                font-size: 11pt;
+            }
+
+            header {
+                padding: 25px;
+                background: var(--bianco);
+                color: #000000;
+                border-bottom: 2px solid #000000;
+            }
+
+            header h2,
+            header p {
+                color: #000000;
+            }
+
+            .top-navigation,
+            .back,
+            .page-actions {
+                display: none;
+            }
+
+            .container {
+                width: 100%;
+                padding: 0;
+            }
+
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #777777;
+            }
+
+            footer {
+                background: var(--bianco);
+                color: #000000;
+                border-top: 1px solid #777777;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body id="inizio">
 
-<header>
+    <header>
+        <h1>Modulo 1</h1>
 
-<h1>Modulo 1</h1>
+        <h2>Da Dalton a Thomson</h2>
 
-<h2>Dalton → Thomson</h2>
+        <p>
+            Dalla prima teoria atomica scientifica alla scoperta
+            delle prime particelle subatomiche.
+        </p>
 
-<p>
-La nascita del modello atomico moderno
-</p>
+        <a href="index.html" class="back">
+            ← Torna al Capitolo 1
+        </a>
+    </header>
 
-index.html
-← Torna al Capitolo 1
-</a>
+    <nav class="top-navigation" aria-label="Indice del Modulo 1">
+        <ul>
+            <li>#obiettiviObiettivi</a></li>
+            <li>#timelineCronologia</a></li>
+            <li>#daltonDalton</a></li>
+            <li>#elettricitaElettricità</a></li>
+            <li>#coulombCoulomb</a></li>
+            <li>#crookesCrookes</a></li>
+            <li>#thomsonThomson</a></li>
+            <li>#millikanMillikan</a></li>
+            <li>#goldsteinGoldstein</a></li>
+            <li>#sintesiSintesi</a></li>
+        </ul>
+    </nav>
 
-</header>
+    <main class="container">
 
-<div class="container">
+        <section class="card" id="obiettivi">
+            <h2>🎯 Obiettivi del modulo</h2>
 
-<div class="card">
+            <div class="intro-grid">
+                <div class="mini-card">
+                    <h3>Conoscenze</h3>
 
-<h2>🎯 Obiettivi del modulo</h2>
+                    <ul>
+                        <li>Conoscere i postulati della teoria atomica di Dalton.</li>
+                        <li>Distinguere carica positiva e carica negativa.</li>
+                        <li>Conoscere la legge di Coulomb.</li>
+                        <li>Descrivere il tubo di Crookes.</li>
+                    </ul>
+                </div>
 
-<ul>
-<li>Comprendere la teoria atomica di Dalton</li>
-<li>Studiare la natura elettrica della materia</li>
-<li>Conoscere la legge di Coulomb</li>
-<li>Analizzare il tubo di Crookes</li>
-<li>Comprendere la scoperta dell'elettrone</li>
-<li>Conoscere il contributo di Thomson e Millikan</li>
-</ul>
+                <div class="mini-card">
+                    <h3>Competenze</h3>
 
-</div>
+                    <ul>
+                        <li>Collegare evidenze sperimentali e modelli atomici.</li>
+                        <li>Spiegare perché il modello di Dalton risultò incompleto.</li>
+                        <li>Interpretare gli esperimenti di Thomson e Millikan.</li>
+                        <li>Ricostruire l’origine delle particelle positive osservate da Goldstein.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-<div class="card">
+        <section class="card" id="timeline">
+            <h2>📜 Cronologia essenziale</h2>
 
-<h2>📜 Timeline storica</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>1785 circa: Coulomb</strong><br>
+                    Quantifica matematicamente la forza elettrica
+                    tra due cariche.
+                </div>
 
-<div class="timeline">
+                <div class="timeline-item">
+                    <strong>1808: Dalton</strong><br>
+                    Formula la prima teoria atomica moderna
+                    fondata su basi scientifiche.
+                </div>
 
-<div>
-<strong>1785 - Coulomb</strong><br>
-Formula la legge delle interazioni elettriche.
-</div>
+                <div class="timeline-item">
+                    <strong>1879: Crookes</strong><br>
+                    Perfeziona il tubo a gas rarefatto usato
+                    nello studio dei raggi catodici.
+                </div>
 
-<div>
-<strong>1808 - Dalton</strong><br>
-Pubblica la prima teoria atomica moderna.
-</div>
+                <div class="timeline-item">
+                    <strong>1886: Goldstein</strong><br>
+                    Osserva i raggi anodici, chiamati anche
+                    raggi canale.
+                </div>
 
-<div>
-<strong>Fine 1800 - Crookes</strong><br>
-Studia i raggi catodici.
-</div>
+                <div class="timeline-item">
+                    <strong>1897: Thomson</strong><br>
+                    Dimostra la natura corpuscolare e negativa
+                    dei raggi catodici.
+                </div>
 
-<div>
-<strong>1897 - Thomson</strong><br>
-Scopre l'elettrone.
-</div>
+                <div class="timeline-item">
+                    <strong>1909: Millikan</strong><br>
+                    Determina la carica elementare attraverso
+                    l’esperimento delle goccioline d’olio.
+                </div>
+            </div>
+        </section>
 
-<div>
-<strong>1909 - Millikan</strong><br>
-Misura la carica dell'elettrone.
-</div>
+        <section class="card" id="dalton">
+            <h2>⚛️ La teoria atomica di Dalton</h2>
 
-</div>
+            <p>
+                Nel 1808 Dalton formulò una teoria capace di spiegare
+                le leggi fondamentali delle trasformazioni chimiche.
+                L’atomo veniva rappresentato come una particella
+                microscopica piena, indivisibile e indistruttibile.
+            </p>
 
-</div>
+            <div class="highlight">
+                <h3>I cinque postulati</h3>
 
-<div class="card">
+                <ol>
+                    <li>
+                        Tutta la materia è costituita da particelle
+                        microscopiche chiamate atomi.
+                    </li>
 
-<h2>⚛️ John Dalton</h2>
+                    <li>
+                        Gli atomi di uno stesso elemento sono considerati
+                        identici e dotati della stessa massa.
+                    </li>
 
-<div class="highlight">
+                    <li>
+                        Gli atomi di un elemento non possono essere
+                        convertiti in quelli di un altro elemento.
+                    </li>
 
-<p><strong>Principali idee:</strong></p>
+                    <li>
+                        Gli atomi si combinano secondo rapporti espressi
+                        da numeri interi.
+                    </li>
 
-<ul>
-<li>la materia è formata da atomi;</li>
-<li>gli atomi sono indivisibili;</li>
-<li>gli atomi dello stesso elemento sono identici;</li>
-<li>gli atomi di elementi diversi sono differenti;</li>
-<li>i composti si formano secondo rapporti semplici.</li>
-</ul>
+                    <li>
+                        Durante una reazione chimica gli atomi non vengono
+                        creati o distrutti, ma vengono riordinati.
+                    </li>
+                </ol>
+            </div>
 
-</div>
+            <div class="two-columns">
+                <div class="mini-card">
+                    <h3>Punti di forza</h3>
 
-</div>
+                    <ul>
+                        <li>Spiega la conservazione della massa.</li>
+                        <li>Spiega i rapporti interi nei composti.</li>
+                        <li>Offre un modello microscopico della materia.</li>
+                    </ul>
+                </div>
 
-<div class="card">
+                <div class="mini-card">
+                    <h3>Limiti</h3>
 
-<h2>⚡ Natura elettrica della materia</h2>
+                    <ul>
+                        <li>Gli isotopi non hanno tutti la stessa massa.</li>
+                        <li>L’atomo contiene particelle subatomiche.</li>
+                        <li>Le reazioni nucleari possono trasformare gli elementi.</li>
+                    </ul>
+                </div>
+            </div>
 
-<ul>
-<li>carica positiva (+)</li>
-<li>carica negativa (-)</li>
-<li>cariche uguali si respingono</li>
-<li>cariche opposte si attraggono</li>
-<li>elettrizzazione per strofinio</li>
-<li>elettrizzazione per induzione</li>
-</ul>
+            <div class="attention">
+                <strong>Attenzione:</strong> i limiti del modello non
+                rendono inutile la teoria di Dalton. Il modello rimane
+                fondamentale per interpretare molte trasformazioni chimiche.
+            </div>
+        </section>
 
-</div>
+        <section class="card" id="elettricita">
+            <h2>⚡ La natura elettrica della materia</h2>
 
-<div class="card">
+            <p>
+                I fenomeni di attrazione e repulsione osservabili dopo
+                lo strofinio suggeriscono che la materia possieda una
+                struttura elettrica interna.
+            </p>
 
-<h2>📐 Legge di
+            <div class="two-columns">
+                <div class="mini-card">
+                    <h3>Interazione tra cariche</h3>
+
+                    <ul>
+                        <li>Cariche dello stesso segno si respingono.</li>
+                        <li>Cariche di segno opposto si attraggono.</li>
+                        <li>Una carica può essere positiva o negativa.</li>
+                    </ul>
+                </div>
+
+                <div class="mini-card">
+                    <h3>Corpo elettricamente neutro</h3>
+
+                    <p>
+                        Un corpo neutro non è privo di cariche:
+                        contiene cariche positive e negative che
+                        si bilanciano.
+                    </p>
+                </div>
+            </div>
+
+            <h3>Elettrizzazione per strofinio</h3>
+
+            <p>
+                Lo strofinio provoca un trasferimento di elettroni
+                tra due materiali.
+            </p>
+
+            <ul>
+                <li>
+                    Il corpo che acquista elettroni diventa negativo.
+                </li>
+
+                <li>
+                    Il corpo che perde elettroni diventa positivo.
+                </li>
+
+                <li>
+                    La carica totale del sistema si conserva.
+                </li>
+            </ul>
+
+            <h3>Elettrizzazione per induzione</h3>
+
+            <p>
+                Un corpo carico avvicinato a un corpo neutro può
+                provocare una separazione temporanea delle cariche
+                senza contatto diretto. Il fenomeno prende il nome
+                di polarizzazione.
+            </p>
+        </section>
+
+        <section class="card" id="coulomb">
+            <h2>📐 La legge di Coulomb</h2>
+
+            <p>
+                La legge di Coulomb descrive quantitativamente
+                l’interazione tra due cariche elettriche puntiformi.
+            </p>
+
+            <div class="formula" aria-label="Formula della legge di Coulomb">
+                F = k<sub>e</sub> · |q<sub>1</sub>q<sub>2</sub>| / r<sup>2</sup>
+            </div>
+
+            <ul>
+                <li>
+                    <strong>F</strong> rappresenta il modulo della forza elettrica.
+                </li>
+
+                <li>
+                    <strong>q<sub>1</sub> e q<sub>2</sub></strong>
+                    rappresentano le due cariche.
+                </li>
+
+                <li>
+                    <strong>r</strong> rappresenta la distanza tra le cariche.
+                </li>
+
+                <li>
+                    <strong>k<sub>e</sub></strong> è la costante elettrostatica.
+                </li>
+            </ul>
+
+            <div class="highlight">
+                Se la distanza raddoppia, la forza diventa un quarto,
+                perché la distanza compare al quadrato nel denominatore.
+            </div>
+        </section>
+
+        <section class="card" id="crookes">
+            <h2>🔬 Il tubo di Crookes</h2>
+
+            <p>
+                Il tubo di Crookes è un recipiente di vetro sigillato
+                contenente un gas a pressione molto bassa.
+            </p>
+
+            <div class="two-columns">
+                <div class="mini-card">
+                    <h3>Componenti</h3>
+
+                    <ul>
+                        <li>Tubo di vetro sigillato.</li>
+                        <li>Gas fortemente rarefatto.</li>
+                        <li>Pompa da vuoto.</li>
+                        <li>Catodo collegato al polo negativo.</li>
+                        <li>Anodo collegato al polo positivo.</li>
+                        <li>Generatore ad alta tensione.</li>
+                    </ul>
+                </div>
+
+                <div class="mini-card">
+                    <h3>Osservazione</h3>
+
+                    <p>
+                        Applicando una forte differenza di potenziale,
+                        compariva una fluorescenza sulla parete situata
+                        davanti al catodo.
+                    </p>
+
+                    <p>
+                        L’effetto suggeriva la presenza di un fascio
+                        originato dal catodo: i raggi catodici.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="thomson">
+            <h2>🧪 Thomson e la scoperta dell’elettrone</h2>
+
+            <p>
+                Thomson studiò il comportamento dei raggi catodici
+                in presenza di campi elettrici e magnetici.
+            </p>
+
+            <table class="comparison">
+                <thead>
+                    <tr>
+                        <th>Osservazione</th>
+                        <th>Deduzione</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Deviazione in un campo magnetico</td>
+                        <td>Il fascio è formato da particelle dotate di massa.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Deviazione verso la piastra positiva</td>
+                        <td>Le particelle possiedono carica negativa.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Stesso comportamento con catodi differenti</td>
+                        <td>Le particelle sono presenti in tutti gli atomi.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight">
+                Thomson identificò una particella subatomica negativa:
+                l’elettrone. L’atomo di Dalton non poteva quindi essere
+                realmente indivisibile.
+            </div>
+
+            <h3>Rapporto tra carica e massa</h3>
+
+            <div class="formula">
+                e / m = −1,76 × 10<sup>8</sup> C/g
+            </div>
+
+            <p>
+                Thomson determinò il rapporto tra carica e massa,
+                ma non misurò separatamente la carica e la massa
+                dell’elettrone.
+            </p>
+        </section>
+
+        <section class="card" id="millikan">
+            <h2>⚙️ Millikan e la carica dell’elettrone</h2>
+
+            <p>
+                Millikan studiò goccioline d’olio elettricamente
+                cariche e determinò il valore della carica elementare.
+            </p>
+
+            <div class="formula">
+                e = −1,6 × 10<sup>−19</sup> C
+            </div>
+
+            <p>
+                Combinando questa misura con il rapporto determinato
+                da Thomson, si può calcolare la massa dell’elettrone.
+            </p>
+
+            <div class="formula">
+                m<sub>e</sub> = 9,11 × 10<sup>−31</sup> kg
+            </div>
+
+            <div class="success">
+                L’esperimento conferma che l’elettrone possiede
+                una massa estremamente piccola rispetto a quella
+                di un atomo.
+            </div>
+        </section>
+
+        <section class="card" id="goldstein">
+            <h2>➕ Goldstein e le particelle positive</h2>
+
+            <p>
+                La neutralità della materia richiedeva la presenza
+                di cariche positive capaci di bilanciare gli elettroni.
+            </p>
+
+            <p>
+                Goldstein utilizzò un tubo contenente gas rarefatto
+                e un catodo forato. Osservò un fascio diretto in senso
+                opposto ai raggi catodici.
+            </p>
+
+            <ul>
+                <li>
+                    Il fascio prende il nome di raggi anodici
+                    o raggi canale.
+                </li>
+
+                <li>
+                    Le particelle si dirigono verso il catodo negativo
+                    e possiedono quindi carica positiva.
+                </li>
+
+                <li>
+                    Le particelle positive derivano dagli atomi del gas
+                    che hanno perso elettroni.
+                </li>
+
+                <li>
+                    La loro massa dipende dal gas contenuto nel tubo.
+                </li>
+
+                <li>
+                    La particella positiva più leggera si ottiene
+                    utilizzando l’idrogeno.
+                </li>
+            </ul>
+
+            <div class="attention">
+                I raggi anodici non sono un fascio universale identico
+                in tutti i gas: sono costituiti dagli ioni positivi
+                del gas presente nel tubo.
+            </div>
+        </section>
+
+        <section class="card" id="sintesi">
+            <h2>🧠 Sintesi del Modulo 1</h2>
+
+            <ol>
+                <li>
+                    Dalton propone il primo modello atomico scientifico.
+                </li>
+
+                <li>
+                    I fenomeni elettrici mettono in discussione
+                    l’idea di un atomo privo di struttura interna.
+                </li>
+
+                <li>
+                    Coulomb quantifica la forza tra cariche elettriche.
+                </li>
+
+                <li>
+                    Il tubo di Crookes rende osservabili gli effetti
+                    dei raggi catodici.
+                </li>
+
+                <li>
+                    Thomson dimostra che i raggi catodici sono formati
+                    da elettroni negativi.
+                </li>
+
+                <li>
+                    Millikan misura la carica elementare e permette
+                    di ricavare la massa dell’elettrone.
+                </li>
+
+                <li>
+                    Goldstein osserva fasci di ioni positivi e apre
+                    la strada allo studio della componente positiva
+                    dell’atomo.
+                </li>
+            </ol>
+
+            <div class="success">
+                <strong>Conclusione:</strong> l’atomo non è una sfera
+                indivisibile. Contiene almeno componenti negative e
+                positive e possiede quindi una struttura interna.
+            </div>
+        </section>
+
+        <div class="page-actions">
+            <a href="index.html" class="button">
+                ← Torna al Capitolo 1
+            </a>
+
+            #inizio
+                ↑ Torna all’inizio
+            </a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p><strong>Scienze Digitali</strong></p>
+        <p>Modulo 1: da Dalton a Thomson</p>
+    </footer>
+
+</body>
+
+</html>
