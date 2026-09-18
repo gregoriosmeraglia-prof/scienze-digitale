@@ -33,8 +33,7 @@
     .back:hover { background: var(--evidenza); transform: translateY(-2px); }
     .top-navigation { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--bordo); box-shadow: 0 2px 8px rgba(38,50,56,.08); }
     .top-navigation ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 1180px; margin: 0 auto; padding: 4px 16px; list-style: none; }
-    .top-navigation a {display: flex; align-items: center; justify-content: center; height: 42px; padding: 0 16px; color: var(--blu-scuro); border-radius: 8px; text-decoration: none;
-    font-size: 0.92rem; font-weight: 700; box-sizing: border-box;}
+    .top-navigation a { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 16px; color: var(--blu-scuro); border-radius: 8px; text-decoration: none; font-size: 0.92rem; font-weight: 700; line-height: 1; box-sizing: border-box; }
     .top-navigation li { display: flex;  align-items: center; }
     .top-navigation a:hover { background: var(--evidenza); }
     .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 4px 0 50px; }
@@ -94,20 +93,23 @@
     <h1>Modulo 1</h1>
     <h2>Da Dalton a Thomson</h2>
     <p>Dalla prima teoria atomica scientifica alla scoperta delle prime particelle subatomiche.</p>
-    <a href="index.html" class="back">← Torna al Capitolo 1</a>
- <nav class="top-navigation" aria-label="Indice del Modulo 1">
+    <a href="./" class="back">← Torna al Capitolo 1</a>
+  </header>
+<nav class="top-navigation" aria-label="Indice del Modulo 1">
   <ul>
-    <li>#obiettivi📚 Obiettivi</a></li>
-    <li><a href="#timeline">📜 Cronologia</a<li>#dalton⚛️ Dalton</a></li>
-    <li>#elettricita⚡ Elettricità</a></li>
-    <li>#coulomb📐 Coulomb</a></li>
-    <li>#crookes🔬 Crookes</a></li>
-    <li><thomson🧪 Thomson</a></li>
-    <li>#millikan⚙️ Millikan</a></li>
-    <li>#goldstein➕ Goldstein</a></li>
-    <li>#sintesi🧠 Sintesi</a></li>
+    <li><a href="#obiettivi">📚 Obiettivi</a></li>
+    <li><a href="#timeline">📜 Cronologia</a></li>
+    <li><a href="#dalton">⚛️ Dalton</a></li>
+    <li><a href="#elettricita">⚡ Elettricità</a></li>
+    <li><a href="#coulomb">📐 Coulomb</a></li>
+    <li><a href="#crookes">🔬 Crookes</a></li>
+    <li><a href="#thomson">🧪 Thomson</a></li>
+    <li><a href="#millikan">⚙️ Millikan</a></li>
+    <li><a href="#goldstein">➕ Goldstein</a></li>
+    <li><a href="#sintesi">🧠 Sintesi</a></li>
   </ul>
 </nav>
+<main class="container">
     <section class="card" id="obiettivi">
       <h2>🎯 Obiettivi del modulo</h2>
       <div class="intro-grid">
@@ -238,7 +240,7 @@
     </section>
 
     <div class="page-actions">
-      <a href="index.html" class="button">← Torna al Capitolo 1</a>
+      <a href="./" class="button">← Torna al Capitolo 1</a>
       <a href="#inizio" class="button">↑ Torna all’inizio</a>
     </div>
   </main>
