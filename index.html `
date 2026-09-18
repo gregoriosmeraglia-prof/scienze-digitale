@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scienze Digitali</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f6f8;
+    color:#333;
+}
+
+header{
+    background:#0d47a1;
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+nav{
+    background:#1565c0;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    margin:15px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+section{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    margin-top:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.card{
+    background:#e3f2fd;
+    padding:20px;
+    margin:15px 0;
+    border-radius:8px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    background:#0d47a1;
+    color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Scienze Digitali</h1>
+<p>Portale didattico di Chimica, Biologia e Scienze della Terra</p>
+</header>
+
+<nav>
+#capitolo1Capitolo 1</a>
+#mappeMappe</a>
+#quizQuiz</a>
+#materialiMateriali</a>
+</nav>
+
+<section id="capitolo1">
+
+<h2>Capitolo 1 - Teorie Atomiche</h2>
+
+<div class="card">
+<h3>Modulo 1</h3>
+<p>Da Dalton a Thomson</p>
+</div>
+
+<div class="card">
+<h3>Modulo 2</h3>
+<p>Rutherford, nucleo e isotopi</p>
+</div>
+
+<div class="card">
+<h3>Modulo 3</h3>
+<p>Radioattività e decadimenti nucleari</p>
+</div>
+
+<div class="card">
+<h3>Modulo 4</h3>
+<p>Emivita e datazione radiometrica</p>
+</div>
+
+<div class="card">
+<h3>Modulo 5</h3>
+<p>Energia nucleare: fissione e fusione</p>
+</div>
+
+</section>
+
+<section id="mappe">
+<h2>Mappe concettuali</h2>
+<p>Area dedicata alle mappe del capitolo.</p>
+</section>
+
+<section id="quiz">
+<h2>Quiz</h2>
+<p>Area dedicata ai quiz interattivi.</p>
+</section>
+
+<section id="materiali">
+<h2>Materiali scaricabili</h2>
+<p>PDF, PowerPoint e schede di studio.</p>
+</section>
+
+<footer>
+Scienze Digitali - Gregorio Smeraglia
+</footer>
+
+</body>
+</html>
