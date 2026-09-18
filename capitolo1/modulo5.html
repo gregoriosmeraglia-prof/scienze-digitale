@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modulo 4 | Radioattività e decadimenti nucleari">
+<<title>Modulo 4 | Modulo 4 | Radioattività e decadimenti nucleari</title>
+  <style>
+    :root {
+      --blu-scuro: #0d47a1;
+      --blu: #1565c0;
+      --blu-chiaro: #42a5f5;
+      --sfondo: #f4f7fb;
+      --bianco: #ffffff;
+      --testo: #263238;
+      --bordo: #d9e4ee;
+      --evidenza: #e3f2fd;
+      --attenzione: #fff8e1;
+      --successo: #e8f5e9;
+      --ombra: 0 4px 16px rgba(13, 71, 161, 0.12);
+      --raggio: 14px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--sfondo); color: var(--testo); line-height: 1.7; }
+    a { color: var(--blu); }
+    a:focus-visible { outline: 3px solid #ffca28; outline-offset: 3px; }
+  header { background: linear-gradient(135deg, var(--blu-scuro), var(--blu-chiaro));  color: var(--bianco); padding: 15px 20px 12px; text-align: center; }
+    header h1 {margin: 0 0 4px;font-size: clamp(1.9rem, 3vw, 2.5rem);}
+    header h2 {margin: 0 0 8px;color: var(--bianco);font-size: clamp(1.2rem, 2.5vw, 1.7rem);}
+    header p {max-width: 760px; margin: 0 auto 12px; font-size: 0.95rem;}
+    .back { display: inline-block; padding: 11px 20px; background: var(--bianco); color: var(--blu-scuro); text-decoration: none; border-radius: 9px; font-weight: 700; transition: transform .2s ease, background .2s ease; }
+    .back:hover { background: var(--evidenza); transform: translateY(-2px); }
+    .top-navigation { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--bordo); box-shadow: 0 2px 8px rgba(38,50,56,.08); }
+    .top-navigation ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 1180px; margin: 0 auto; padding: 4px 16px; list-style: none; }
+    .top-navigation a { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 16px; color: var(--blu-scuro); border-radius: 8px; text-decoration: none; font-size: 0.92rem; font-weight: 700; line-height: 1; box-sizing: border-box; }
+    .top-navigation li { display: flex;  align-items: center; }
+    .top-navigation a:hover { background: var(--evidenza); }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 4px 0 50px; }
+    .card { margin: 10px 0; padding: 28px; background: var(--bianco); border: 1px solid var(--bordo); border-radius: var(--raggio); box-shadow: var(--ombra); }
+    .card h2 { margin-top: 0; color: var(--blu); line-height: 1.3; }
+    .card h3 { color: var(--blu-scuro); }
+    .card p:last-child, .card ul:last-child, .card ol:last-child { margin-bottom: 0; }
+    .intro-grid, .two-columns { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .mini-card { padding: 20px; background: #f8fbfe; border: 1px solid var(--bordo); border-radius: 11px; }
+    .mini-card h3 { margin-top: 0; }
+    ul, ol { padding-left: 24px; }
+    li + li { margin-top: 5px; }
+    .highlight, .attention, .success { margin: 16px 0; padding: 18px; border-radius: 10px; }
+    .highlight { background: var(--evidenza); border-left: 5px solid var(--blu); }
+    .attention { background: var(--attenzione); border-left: 5px solid #f9a825; }
+    .success { background: var(--successo); border-left: 5px solid #388e3c; }
+    .formula { margin: 18px 0; padding: 22px; overflow-x: auto; background: #eef6ff; border: 2px solid #90caf9; border-radius: 12px; color: var(--blu-scuro); text-align: center; font-size: clamp(1.25rem,4vw,1.8rem); font-weight: 700; }
+    .timeline { position: relative; margin-left: 10px; padding-left: 28px; border-left: 4px solid var(--blu); }
+    .timeline-item { position: relative; margin: 0 0 24px; padding-left: 8px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before { content: ""; position: absolute; top: 7px; left: -40px; width: 14px; height: 14px; background: var(--bianco); border: 4px solid var(--blu); border-radius: 50%; }
+    .timeline-item strong { color: var(--blu-scuro); }
+    .table-wrapper { overflow-x: auto; }
+    .comparison { width: 100%; margin-top: 16px; border-collapse: collapse; }
+    .comparison th, .comparison td { padding: 12px; border: 1px solid var(--bordo); text-align: left; vertical-align: top; }
+    .comparison th { background: var(--blu); color: var(--bianco); }
+    .comparison tbody tr:nth-child(even) { background: #f7fafc; }
+    .page-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 28px; }
+    .button { display: inline-block; padding: 11px 18px; background: var(--blu); color: var(--bianco); border-radius: 8px; text-decoration: none; font-weight: 700; transition: background .2s ease, transform .2s ease; }
+    .button:hover { background: var(--blu-scuro); transform: translateY(-2px); }
+    footer { padding: 25px 18px; background: var(--blu-scuro); color: var(--bianco); text-align: center; }
+    footer p { margin: 4px 0; }
+    @media (max-width: 760px) {
+      header { padding: 12px 12px 10px; }
+      .container { width: min(100% - 20px, 1120px); }
+      .card { padding: 21px; }
+      .intro-grid, .two-columns { grid-template-columns: 1fr; }
+      .top-navigation { position: static; }
+      .top-navigation ul { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; }
+      .top-navigation a { white-space: nowrap; }
+      .page-actions { flex-direction: column; }
+      .button { text-align: center; }
+    }
+    @media print {
+      body { background: var(--bianco); font-size: 11pt; }
+      header { padding: 25px; background: var(--bianco); color: #000; border-bottom: 2px solid #000; }
+      header h2, header p { color: #000; }
+      .top-navigation, .back, .page-actions { display: none; }
+      .container { width: 100%; padding: 0; }
+      .card { break-inside: avoid; box-shadow: none; border: 1px solid #777; }
+      footer { background: var(--bianco); color: #000; border-top: 1px solid #777; }
+    }
+  </style>
+</head>
+<body id="inizio">
+  <header>
+    <h1>Modulo 4</h1>
+    <h2 Radioattività e decadimenti nucleari</h2>
+    <p> Radioattività e decadimenti.</p>
+    <a href="./" class="back">← Torna al Capitolo 1</a>
+  </header>
+<nav class="top-navigation" aria-label="Indice del Modulo 4">
+  <ul>
+    <li><a href="#obiettivi">📚 Obiettivi</a></li>
+    <li><a href="#timeline">📜 Cronologia</a></li>
+    <li><a href="#Radioattività">☢️ Radioattività</a></li>
+    <li><a href="#Raggi X">🔬 Raggi X</a></li>
+    <li><a href="#Becquerel e Curie">👩‍🔬 Becquerel e Curie</a></li>
+    <li><a href="#Stabilità nucleare">⚛️ Stabilità nucleare</a></li>
+    <li><a href="#Raggi α β γ">🌈 Raggi α β γ</a></li>
+    <li><a href="#Trasformazioni nucleari">🔄 Trasformazioni nucleari</a></li>
+    <li><a href="#sintesi">🧠 Sintesi</a></li>
+  </ul>
+</nav>
+<main class="container">
+<section class="card" id="obiettivi">
+
+  <h2>🎯 Obiettivi del modulo</h2>
+
+  <div class="intro-grid">
+
+    <div class="mini-card">
+
+      <h3>Conoscenze</h3>
+
+      <ul>
+        <li>Conoscere la scoperta dei raggi X e della radioattività.</li>
+        <li>Comprendere il concetto di radioattività spontanea.</li>
+        <li>Conoscere il ruolo di Röntgen, Becquerel, Curie e Rutherford.</li>
+        <li>Comprendere il concetto di stabilità nucleare.</li>
+        <li>Distinguere le radiazioni α, β e γ.</li>
+        <li>Comprendere il significato di decadimento radioattivo.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Competenze</h3>
+
+      <ul>
+        <li>Interpretare fenomeni radioattivi naturali.</li>
+        <li>Confrontare le proprietà delle diverse radiazioni.</li>
+        <li>Spiegare l'origine della radioattività.</li>
+        <li>Descrivere il comportamento dei nuclei instabili.</li>
+        <li>Collegare le trasformazioni nucleari ai cambiamenti degli elementi chimici.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="success">
+
+    <strong>Focus del modulo:</strong>
+
+    <p>
+      Comprendere come la scoperta della radioattività abbia
+      definitivamente dimostrato che l'atomo possiede una struttura
+      interna dinamica e possa trasformarsi spontaneamente.
+    </p>
+
+  </div>
+
+</section>
+    <section class="card" id="timeline">
+
+  <h2>📜 Cronologia essenziale</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <strong>1895: Wilhelm Conrad Röntgen</strong><br>
+      Scopre i raggi X studiando i tubi a vuoto e apre una nuova era
+      nella fisica e nella diagnostica medica.
+    </div>
+
+    <div class="timeline-item">
+      <strong>1896: Henri Becquerel</strong><br>
+      Scopre la radioattività naturale osservando l'emissione spontanea
+      di radiazioni da parte dei sali di uranio.
+    </div>
+
+    <div class="timeline-item">
+      <strong>1898: Marie e Pierre Curie</strong><br>
+      Isolano il Polonio e il Radio e dimostrano che la radioattività
+      è una proprietà intrinseca della materia.
+    </div>
+
+    <div class="timeline-item">
+      <strong>1899: Ernest Rutherford</strong><br>
+      Distingue le radiazioni alfa (α) e beta (β).
+    </div>
+
+    <div class="timeline-item">
+      <strong>1900: Paul Villard</strong><br>
+      Identifica le radiazioni gamma (γ), altamente penetranti e prive
+      di carica elettrica.
+    </div>
+
+  </div>
+
+  <div class="highlight">
+
+    <h3>L'età d'oro della radioattività</h3>
+
+    <p>
+      Tra il 1895 e il 1900 la concezione classica della materia viene
+      completamente rivoluzionata dalla scoperta dei raggi X,
+      della radioattività e delle diverse tipologie di radiazione.
+    </p>
+
+  </div>
+<section class="card" id="radioattivita">
+
+  <h2>☢️ La scoperta della radioattività</h2>
+
+  <p>
+    Alla fine del XIX secolo gli scienziati erano impegnati nello studio
+    delle nuove radiazioni scoperte nei laboratori di fisica.
+  </p>
+
+  <p>
+    Nel 1896 il fisico francese Henri Becquerel osservò un fenomeno
+    completamente inatteso che avrebbe rivoluzionato la conoscenza
+    dell'atomo.
+  </p>
+
+  <div class="highlight">
+
+    <h3>L'esperimento di Becquerel</h3>
+
+    <p>
+      Becquerel conservò alcuni sali di uranio all'interno di un cassetto,
+      sopra una lastra fotografica accuratamente protetta dalla luce.
+    </p>
+
+    <p>
+      Dopo alcuni giorni scoprì che la lastra fotografica risultava
+      impressionata nonostante fosse rimasta sempre al buio.
+    </p>
+
+    <p>
+      L'uranio emetteva spontaneamente una radiazione invisibile.
+    </p>
+
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Osservazione</h3>
+
+      <ul>
+        <li>Assenza di luce esterna.</li>
+        <li>Lastra fotografica impressionata.</li>
+        <li>Emissione spontanea di energia.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Conclusione</h3>
+
+      <ul>
+        <li>L'energia proveniva dall'atomo.</li>
+        <li>Il fenomeno era spontaneo.</li>
+        <li>La materia non era immutabile.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="attention">
+
+    <strong>Conseguenza fondamentale:</strong>
+
+    <p>
+      La scoperta della radioattività dimostrò che l'atomo non è una
+      particella indivisibile e immutabile come immaginato da Dalton.
+    </p>
+
+  </div>
+
+  <h3>Il contributo di Marie e Pierre Curie</h3>
+
+  <p>
+    Studiando i materiali radioattivi, Marie Curie concluse che la
+    radioattività è una proprietà dell'atomo stesso e non del composto
+    chimico in cui l'atomo si trova.
+  </p>
+
+  <p>
+    Nel 1898 Marie e Pierre Curie scoprirono due nuovi elementi
+    altamente radioattivi:
+  </p>
+
+  <ul>
+    <li>Polonio (Po)</li>
+    <li>Radio (Ra)</li>
+  </ul>
+
+  <div class="success">
+
+    <strong>Nuovo paradigma:</strong>
+
+    <p>
+      Gli atomi non sono strutture rigide e permanenti. Alcuni nuclei
+      possono trasformarsi spontaneamente emettendo energia e particelle.
+    </p>
+
+  </div>
+
+</section>
+<section class="card" id="raggi-x">
+
+  <h2>🔬 I raggi X di Röntgen</h2>
+
+  <p>
+    L'8 novembre 1895 il fisico tedesco Wilhelm Conrad Röntgen
+    osservò un fenomeno inatteso mentre studiava i tubi catodici.
+  </p>
+
+  <p>
+    Uno schermo fluorescente posto a distanza dal tubo iniziò a
+    emettere luce anche se non era direttamente illuminato.
+  </p>
+
+  <div class="highlight">
+
+    <h3>La scoperta</h3>
+
+    <p>
+      Röntgen comprese che dal tubo veniva emessa una nuova forma
+      di radiazione capace di attraversare molti materiali.
+    </p>
+
+    <p>
+      Non conoscendone la natura, la chiamò
+      <strong>radiazione X</strong>.
+    </p>
+
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Caratteristiche</h3>
+
+      <ul>
+        <li>Radiazione elettromagnetica.</li>
+        <li>Elevata energia.</li>
+        <li>Grande potere penetrante.</li>
+        <li>Capace di attraversare i tessuti molli.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Osservazioni</h3>
+
+      <ul>
+        <li>Impressionano le lastre fotografiche.</li>
+        <li>Producono fluorescenza.</li>
+        <li>Attraversano diversi materiali.</li>
+        <li>Permettono di visualizzare le ossa.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="success">
+
+    <strong>La prima radiografia</strong>
+
+    <p>
+      Utilizzando i raggi X, Röntgen ottenne la celebre immagine
+ 
+
+</section>
+<section class="card" id="becquerel-curie">
+
+  <h2>👩‍🔬 Becquerel, Curie e la radioattività spontanea</h2>
+
+  <p>
+    Dopo la scoperta dei raggi X da parte di Röntgen, molti scienziati
+    iniziarono a studiare sostanze capaci di emettere radiazioni.
+  </p>
+
+  <p>
+    Nel 1896 Henri Becquerel realizzò un esperimento destinato a
+    rivoluzionare la fisica atomica.
+  </p>
+
+  <div class="highlight">
+
+    <h3>L'esperimento di Becquerel</h3>
+
+    <p>
+      Alcuni sali di uranio vennero conservati al buio sopra una
+      lastra fotografica accuratamente protetta dalla luce.
+    </p>
+
+    <p>
+      Quando la lastra fu sviluppata apparve impressionata:
+      l'uranio aveva emesso spontaneamente una radiazione invisibile.
+    </p>
+
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Osservazione</h3>
+
+      <ul>
+        <li>Assenza di luce esterna.</li>
+        <li>Lastra fotografica impressionata.</li>
+        <li>Emissione continua di energia.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Conclusione</h3>
+
+      <ul>
+        <li>L'energia proveniva dall'interno dell'atomo.</li>
+        <li>Il fenomeno era spontaneo.</li>
+        <li>La materia non era immutabile.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="attention">
+
+    <strong>Una rivoluzione scientifica</strong>
+
+    <p>
+      La scoperta di Becquerel dimostrò che alcuni atomi possono
+      emettere energia senza alcuna sollecitazione esterna.
+    </p>
+
+  </div>
+
+  <h3>Il lavoro di Marie e Pierre Curie</h3>
+
+  <p>
+    Marie Curie intuì che la radioattività è una proprietà
+    intrinseca degli atomi e non una caratteristica del composto
+    chimico che li contiene.
+  </p>
+
+  <p>
+    Insieme a Pierre Curie isolò due nuovi elementi fortemente
+    radioattivi:
+  </p>
+
+  <ul>
+    <li><strong>Polonio (Po)</strong></li>
+    <li><strong>Radio (Ra)</strong></li>
+  </ul>
+
+  <div class="formula">
+    Radioattività = emissione spontanea di energia da nuclei instabili
+  </div>
+
+  <div class="success">
+
+    <strong>Nuovo paradigma scientifico</strong>
+
+    <p>
+      La radioattività dimostra che l'atomo non è indivisibile e può
+      trasformarsi spontaneamente nel tempo.
+    </p>
+
+  </div>
+
+</section>
+ <section class="card" id="stabilita">
+
+  <h2>⚛️ Stabilità nucleare e forza nucleare forte</h2>
+
+  <p>
+    Dopo la scoperta del nucleo atomico emerse un importante problema:
+    come può il nucleo rimanere stabile se contiene numerosi protoni
+    dotati di carica positiva?
+  </p>
+
+  <p>
+    Secondo la legge di Coulomb, cariche dello stesso segno si
+    respingono. I protoni dovrebbero quindi allontanarsi gli uni
+    dagli altri provocando la distruzione del nucleo.
+  </p>
+
+  <div class="highlight">
+
+    <h3>Il paradosso del nucleo</h3>
+
+    <p>
+      I nuclei degli atomi esistono e sono spesso stabili per milioni
+      o miliardi di anni, nonostante la forte repulsione elettrica tra
+      i protoni.
+    </p>
+
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Forza elettrica</h3>
+
+      <ul>
+        <li>I protoni hanno carica positiva.</li>
+        <li>Cariche uguali si respingono.</li>
+        <li>La repulsione aumenta quando la distanza diminuisce.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Forza nucleare forte</h3>
+
+      <ul>
+        <li>Agisce tra protoni e neutroni.</li>
+        <li>È molto intensa a distanza molto piccola.</li>
+        <li>Supera la repulsione elettrica.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="formula">
+    Forza nucleare forte > Repulsione elettrica
+  </div>
+
+  <p>
+    A distanze 
+
+<section class="card" id="radiazioni">
+
+  <h2>🌈 Le radiazioni α, β e γ</h2>
+
+  <p>
+    Studiando la radioattività, gli scienziati scoprirono che le
+    radiazioni emesse dai nuclei instabili non erano tutte uguali.
+  </p>
+
+  <p>
+    Rutherford identificò inizialmente le radiazioni alfa (α) e beta (β),
+    mentre Villard scoprì successivamente le radiazioni gamma (γ).
+  </p>
+
+  <div class="highlight">
+
+    <h3>Tre tipi fondamentali di radiazione</h3>
+
+    <p>
+      Le radiazioni differiscono per natura, massa, carica elettrica
+      e potere penetrante.
+    </p>
+
+  </div>
+
+  <div class="table-wrapper">
+
+    <table class="comparison">
+      <thead>
+        <tr>
+          <th>Radiazione</th>
+          <th>Natura</th>
+          <th>Carica</th>
+          <th>Potere penetrante</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>α (Alfa)</td>
+          <td>Nuclei di Elio</td>
+          <td>+2</td>
+          <td>Basso</td>
+        </tr>
+
+        <tr>
+          <td>β⁻ (Beta)</td>
+          <td>Elettroni veloci</td>
+          <td>-1</td>
+          <td>Medio</td>
+        </tr>
+
+        <tr>
+          <td>γ (Gamma)</td>
+          <td>Onde elettromagnetiche</td>
+          <td>0</td>
+          <td>Molto elevato</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Radiazioni α</h3>
+
+      <ul>
+        <li>Formate da 2 protoni e 2 neutroni.</li>
+        <li>Carica positiva.</li>
+        <li>Grande massa.</li>
+        <li>Bloccate da un semplice foglio di carta.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Radiazioni β⁻</h3>
+
+      <ul>
+        <li>Costituite da elettroni.</li>
+        <li>Carica negativa.</li>
+        <li>Massa molto piccola.</li>
+        <li>Bloccate da sottili lamine metalliche.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="mini-card" style="margin-top:20px;">
+
+    <h3>Radiazioni γ</h3>
+
+    <ul>
+      <li>Onde elettromagnetiche ad altissima energia.</li>
+      <li>Prive di massa.</li>
+      <li>Prive di carica elettrica.</li>
+      <li>Richiedono spessi schermi di piombo per essere attenuate.</li>
+    </ul>
+
+  </div>
+
+  <div class="formula">
+    Potere penetrante:
+    α < β < γ
+  </div>
+
+  <div class="attention">
+
+    <strong>Importante:</strong>
+
+    <p>
+      Le radiazioni α e β sono costituite da particelle materiali,
+      mentre le radiazioni γ sono onde elettromagnetiche simili alla
+      luce, ma molto più energetiche.
+    </p>
+
+  </div>
+
+  <div class="success">
+
+    <strong>Applicazione:</strong>
+
+    <p>
+      L'identificazione delle diverse radiazioni permise di comprendere
+      meglio i processi di decadimento radioattivo e le trasformazioni
+      che avvengono all'interno del nucleo atomico.
+    </p>
+
+  </div>
+
+</section>
+  <section class="card" id="limiti">
+<section class="card" id="trasformazioni">
+
+  <h2>🔄 Le trasformazioni nucleari</h2>
+
+  <p>
+    Quando un nucleo instabile emette radiazioni, la sua struttura
+    interna cambia. Questo processo prende il nome di
+    <strong>trasformazione nucleare</strong> o
+    <strong>decadimento radioattivo</strong>.
+  </p>
+
+  <p>
+    A differenza delle reazioni chimiche, nelle trasformazioni nucleari
+    cambia il nucleo dell'atomo e può cambiare l'identità stessa
+    dell'elemento chimico.
+  </p>
+
+  <div class="highlight">
+
+    <h3>Una scoperta rivoluzionaria</h3>
+
+    <p>
+      La radioattività ha dimostrato che un elemento può trasformarsi
+      spontaneamente in un elemento diverso.
+    </p>
+
+  </div>
+
+  <h3>Conservazione nelle reazioni nucleari</h3>
+
+  <p>
+    In ogni reazione nucleare devono conservarsi:
+  </p>
+
+  <ul>
+    <li>Il numero di massa (A).</li>
+    <li>Il numero atomico (Z).</li>
+  </ul>
+
+  <div class="formula">
+    Somma di A prima = Somma di A dopo
+    <br>
+    Somma di Z prima = Somma di Z dopo
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Decadimento α</h3>
+
+      <ul>
+        <li>Emissione di un nucleo di elio.</li>
+        <li>Z diminuisce di 2.</li>
+        <li>A diminuisce di 4.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Decadimento β⁻</h3>
+
+      <ul>
+        <li>Emissione di un elettrone.</li>
+        <li>Z aumenta di 1.</li>
+        <li>A rimane costante.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Decadimento β⁺</h3>
+
+      <ul>
+        <li>Emissione di un positrone.</li>
+        <li>Z diminuisce di 1.</li>
+        <li>A rimane costante.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Emissione γ</h3>
+
+      <ul>
+        <li>Emissione di energia.</li>
+        <li>Z invariato.</li>
+        <li>A invariato.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="table-wrapper">
+
+    <table class="comparison">
+      <thead>
+        <tr>
+          <th>Processo</th>
+          <th>ΔZ</th>
+          <th>ΔA</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>Decadimento α</td>
+          <td>-2</td>
+          <td>-4</td>
+        </tr>
+
+        <tr>
+          <td>Decadimento β⁻</td>
+          <td>+1</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td>Decadimento β⁺</td>
+          <td>-1</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td>Emissione γ</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div class="attention">
+
+    <strong>Importante:</strong>
+
+    <p>
+      Le trasformazioni nucleari modificano il nucleo degli atomi e
+      possono portare alla formazione di elementi chimici differenti.
+      Per questo motivo la radioattività rappresenta una vera
+      trasmutazione della materia.
+    </p>
+
+  </div>
+
+  <div class="success">
+
+    <strong>Collegamento al Modulo 5:</strong>
+
+    <p>
+      I decadimenti radioattivi non avvengono tutti alla stessa velocità.
+      Nel prossimo modulo studieremo il tempo di dimezzamento,
+      l'emivita e le tecniche di datazione radiometrica.
+    </p>
+
+  </div>
+
+</section>
+
+ <section class="card" id="sintesi">
+
+  <h2>🧠 Sintesi del Modulo 4</h2>
+
+  <ol>
+
+    <li>
+      Nel 1895 Röntgen scoprì i raggi X, una nuova forma di radiazione
+      ad alta energia.
+    </li>
+
+    <li>
+      Nel 1896 Becquerel osservò la radioattività spontanea
+      dei sali di uranio.
+    </li>
+
+    <li>
+      Marie e Pierre Curie scoprirono il Polonio e il Radio,
+      dimostrando che la radioattività è una proprietà atomica.
+    </li>
+
+    <li>
+      La radioattività dimostrò che l'atomo non è una struttura
+      indivisibile e immutabile.
+    </li>
+
+    <li>
+      La stabilità del nucleo dipende dall'equilibrio tra
+      repulsione elettrica e forza nucleare forte.
+    </li>
+
+    <li>
+      I nuclei instabili tendono spontaneamente a trasformarsi
+      per raggiungere condizioni di maggiore stabilità.
+    </li>
+
+    <li>
+      Rutherford identificò le radiazioni alfa (α) e beta (β).
+    </li>
+
+    <li>
+      Villard scoprì le radiazioni gamma (γ).
+    </li>
+
+    <li>
+      Le radiazioni α, β e γ possiedono proprietà e potere
+      penetrante differenti.
+    </li>
+
+    <li>
+      I decadimenti radioattivi modificano il nucleo e possono
+      trasformare un elemento chimico in un altro.
+    </li>
+
+  </ol>
+
+  <div class="success">
+
+    <strong>Conclusione:</strong>
+
+    <p>
+      La scoperta della radioattività ha rivoluzionato la nostra
+      comprensione della materia, dimostrando che i nuclei atomici
+      possono emettere energia e trasformarsi spontaneamente nel tempo.
+    </p>
+
+  </div>
+
+  <div class="attention">
+
+    <strong>Verso il Modulo 5:</strong>
+
+    <p>
+      I nuclei instabili non decadono tutti alla stessa velocità.
+      Nel prossimo modulo studieremo l'emivita, il decadimento
+      radioattivo nel tempo e le tecniche di datazione radiometrica
+      utilizzate in archeologia e geologia.
+    </p>
+
+  </div>
+
+</section>
+  </main>
+
+  <footer>
+    <p><strong>Scienze Digitali</strong></p>
+    <p>Modulo 4: Radioattività e decadimenti nucleari</p>
+  </footer>
+</body>
+</html>
