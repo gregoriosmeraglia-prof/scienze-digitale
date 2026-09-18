@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modulo didattico dedicato a Rutherford, all'esperimento della lamina d'oro e al modello nucleare dell'atomo.">
+<title>Modulo 2 | Rutherford e il modello nucleare</title>
+  <style>
+    :root {
+      --blu-scuro: #0d47a1;
+      --blu: #1565c0;
+      --blu-chiaro: #42a5f5;
+      --sfondo: #f4f7fb;
+      --bianco: #ffffff;
+      --testo: #263238;
+      --bordo: #d9e4ee;
+      --evidenza: #e3f2fd;
+      --attenzione: #fff8e1;
+      --successo: #e8f5e9;
+      --ombra: 0 4px 16px rgba(13, 71, 161, 0.12);
+      --raggio: 14px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--sfondo); color: var(--testo); line-height: 1.7; }
+    a { color: var(--blu); }
+    a:focus-visible { outline: 3px solid #ffca28; outline-offset: 3px; }
+  header { background: linear-gradient(135deg, var(--blu-scuro), var(--blu-chiaro));  color: var(--bianco); padding: 15px 20px 12px; text-align: center; }
+    header h1 {margin: 0 0 4px;font-size: clamp(1.9rem, 3vw, 2.5rem);}
+    header h2 {margin: 0 0 8px;color: var(--bianco);font-size: clamp(1.2rem, 2.5vw, 1.7rem);}
+    header p {max-width: 760px; margin: 0 auto 12px; font-size: 0.95rem;}
+    .back { display: inline-block; padding: 11px 20px; background: var(--bianco); color: var(--blu-scuro); text-decoration: none; border-radius: 9px; font-weight: 700; transition: transform .2s ease, background .2s ease; }
+    .back:hover { background: var(--evidenza); transform: translateY(-2px); }
+    .top-navigation { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--bordo); box-shadow: 0 2px 8px rgba(38,50,56,.08); }
+    .top-navigation ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 1180px; margin: 0 auto; padding: 4px 16px; list-style: none; }
+    .top-navigation a { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 16px; color: var(--blu-scuro); border-radius: 8px; text-decoration: none; font-size: 0.92rem; font-weight: 700; line-height: 1; box-sizing: border-box; }
+    .top-navigation li { display: flex;  align-items: center; }
+    .top-navigation a:hover { background: var(--evidenza); }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 4px 0 50px; }
+    .card { margin: 10px 0; padding: 28px; background: var(--bianco); border: 1px solid var(--bordo); border-radius: var(--raggio); box-shadow: var(--ombra); }
+    .card h2 { margin-top: 0; color: var(--blu); line-height: 1.3; }
+    .card h3 { color: var(--blu-scuro); }
+    .card p:last-child, .card ul:last-child, .card ol:last-child { margin-bottom: 0; }
+    .intro-grid, .two-columns { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .mini-card { padding: 20px; background: #f8fbfe; border: 1px solid var(--bordo); border-radius: 11px; }
+    .mini-card h3 { margin-top: 0; }
+    ul, ol { padding-left: 24px; }
+    li + li { margin-top: 5px; }
+    .highlight, .attention, .success { margin: 16px 0; padding: 18px; border-radius: 10px; }
+    .highlight { background: var(--evidenza); border-left: 5px solid var(--blu); }
+    .attention { background: var(--attenzione); border-left: 5px solid #f9a825; }
+    .success { background: var(--successo); border-left: 5px solid #388e3c; }
+    .formula { margin: 18px 0; padding: 22px; overflow-x: auto; background: #eef6ff; border: 2px solid #90caf9; border-radius: 12px; color: var(--blu-scuro); text-align: center; font-size: clamp(1.25rem,4vw,1.8rem); font-weight: 700; }
+    .timeline { position: relative; margin-left: 10px; padding-left: 28px; border-left: 4px solid var(--blu); }
+    .timeline-item { position: relative; margin: 0 0 24px; padding-left: 8px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before { content: ""; position: absolute; top: 7px; left: -40px; width: 14px; height: 14px; background: var(--bianco); border: 4px solid var(--blu); border-radius: 50%; }
+    .timeline-item strong { color: var(--blu-scuro); }
+    .table-wrapper { overflow-x: auto; }
+    .comparison { width: 100%; margin-top: 16px; border-collapse: collapse; }
+    .comparison th, .comparison td { padding: 12px; border: 1px solid var(--bordo); text-align: left; vertical-align: top; }
+    .comparison th { background: var(--blu); color: var(--bianco); }
+    .comparison tbody tr:nth-child(even) { background: #f7fafc; }
+    .page-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 28px; }
+    .button { display: inline-block; padding: 11px 18px; background: var(--blu); color: var(--bianco); border-radius: 8px; text-decoration: none; font-weight: 700; transition: background .2s ease, transform .2s ease; }
+    .button:hover { background: var(--blu-scuro); transform: translateY(-2px); }
+    footer { padding: 25px 18px; background: var(--blu-scuro); color: var(--bianco); text-align: center; }
+    footer p { margin: 4px 0; }
+    @media (max-width: 760px) {
+      header { padding: 12px 12px 10px; }
+      .container { width: min(100% - 20px, 1120px); }
+      .card { padding: 21px; }
+      .intro-grid, .two-columns { grid-template-columns: 1fr; }
+      .top-navigation { position: static; }
+      .top-navigation ul { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; }
+      .top-navigation a { white-space: nowrap; }
+      .page-actions { flex-direction: column; }
+      .button { text-align: center; }
+    }
+    @media print {
+      body { background: var(--bianco); font-size: 11pt; }
+      header { padding: 25px; background: var(--bianco); color: #000; border-bottom: 2px solid #000; }
+      header h2, header p { color: #000; }
+      .top-navigation, .back, .page-actions { display: none; }
+      .container { width: 100%; padding: 0; }
+      .card { break-inside: avoid; box-shadow: none; border: 1px solid #777; }
+      footer { background: var(--bianco); color: #000; border-top: 1px solid #777; }
+    }
+  </style>
+</head>
+<body id="inizio">
+  <header>
+    <h1>Modulo 2</h1>
+    <h2>Rutherford e il modello nucleare dell'atomo</h2>
+    <p>Dalla prima teoria atomica scientifica alla scoperta delle prime particelle subatomiche.</p>
+    <a href="./" class="back">← Torna al Capitolo 1</a>
+  </header>
+<nav class="top-navigation" aria-label="Indice del Modulo 1">
+  <ul>
+    <li><a href="#obiettivi">📚 Obiettivi</a></li>
+    <li><a href="#timeline">📜 Cronologia</a></li>
+    <li><a href="#thomson">⚛️ Thomson</a></li>
+    <li><a href="#esperimento">⚡ Esperimento</a></li>
+    <li><a href="#risultati">📐 risultati</a></li>
+    <li><a href="#conclusioni">🔬 Conclusioni</a></li>
+    <li><a href="#nucleo">🧪 nucleo</a></li>
+    <li><a href="#modello-rutherford">⚙️ modello-rutherford</a></li>
+    <li><a href="#limiti">➕ limiti</a></li>
+    <li><a href="#sintesi">🧠 Sintesi</a></li>
+  </ul>
+</nav>
+<main class="container">
+  <section class="card" id="obiettivi">
+  <h2>🎯 Obiettivi del modulo</h2>
+
+  <div class="intro-grid">
+
+    <div class="mini-card">
+      <h3>Conoscenze</h3>
+      <ul>
+        <li>Conoscere l'esperimento della lamina d'oro.</li>
+        <li>Comprendere il concetto di nucleo atomico.</li>
+        <li>Conoscere il modello nucleare di Rutherford.</li>
+        <li>Distinguere il modello di Thomson da quello di Rutherford.</li>
+      </ul>
+    </div>
+
+    <div class="mini-card">
+      <h3>Competenze</h3>
+      <ul>
+        <li>Interpretare dati sperimentali.</li>
+        <li>Collegare osservazioni e modelli atomici.</li>
+        <li>Spiegare perché l'atomo è quasi completamente vuoto.</li>
+        <li>Argomentare il superamento del modello di Thomson.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+    <section class="card" id="timeline">
+  <h2>📜 Cronologia essenziale</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <strong>1897: Thomson</strong><br>
+      Scopre l'elettrone e propone il modello a panettone.
+    </div>
+
+    <div class="timeline-item">
+      <strong>1909: Geiger e Marsden</strong><br>
+      Realizzano l'esperimento della lamina d'oro sotto la guida di Rutherford.
+    </div>
+
+    <div class="timeline-item">
+      <strong>1911: Rutherford</strong><br>
+      Propone il modello nucleare dell'atomo.
+    </div>
+
+  </div>
+</section>
+
+   <section class="card" id="thomson">
+
+  <h2>⚛️ Il modello di Thomson sotto esame</h2>
+
+  <p>
+    Dopo la scoperta dell'elettrone, J. J. Thomson propose un nuovo modello atomico.
+  </p>
+
+  <div class="highlight">
+    <h3>Caratteristiche del modello</h3>
+
+    <ul>
+      <li>L'atomo è una sfera carica positivamente.</li>
+      <li>Gli elettroni sono immersi nella massa positiva.</li>
+      <li>La carica positiva è distribuita uniformemente.</li>
+      <li>Non esiste un nucleo centrale.</li>
+    </ul>
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+      <h3>Punti di forza</h3>
+
+      <ul>
+        <li>Spiega la neutralità dell'atomo.</li>
+        <li>Introduce la presenza degli elettroni.</li>
+        <li>Migliora il modello di Dalton.</li>
+      </ul>
+    </div>
+
+    <div class="mini-card">
+      <h3>Limiti</h3>
+
+      <ul>
+        <li>Non spiega la distribuzione della massa.</li>
+        <li>Non prevede un nucleo centrale.</li>
+        <li>Non era supportato da prove sperimentali.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="attention">
+    <strong>Attenzione:</strong>
+    il modello di Thomson viene spesso paragonato a un
+    panettone con gocce di cioccolato o a un budino con uvetta.
+  </div>
+
+</section>
+<section class="card" id="esperimento">
+
+  <h2>🔬 L'esperimento della lamina d'oro</h2>
+
+  <p>
+    Per verificare il modello atomico di Thomson, Ernest Rutherford,
+    insieme ai suoi collaboratori Hans Geiger ed Ernest Marsden,
+    realizzò uno degli esperimenti più importanti della storia della chimica e della fisica.
+  </p>
+
+  <div class="highlight">
+    <h3>Obiettivo dell'esperimento</h3>
+
+    <p>
+      Verificare se la carica positiva dell'atomo fosse distribuita
+      uniformemente, come previsto dal modello di Thomson,
+      oppure concentrata in una regione più piccola.
+    </p>
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+      <h3>Materiali utilizzati</h3>
+
+      <ul>
+        <li>Sorgente radioattiva.</li>
+        <li>Particelle alfa (α).</li>
+        <li>Sottilissima lamina d'oro.</li>
+        <li>Schermo fluorescente.</li>
+      </ul>
+    </div>
+
+    <div class="mini-card">
+      <h3>Procedura</h3>
+
+      <p>
+        Le particelle α venivano lanciate contro una lamina d'oro
+        estremamente sottile.
+      </p>
+
+      <p>
+        Lo schermo fluorescente permetteva di osservare il percorso
+        seguito dalle particelle dopo l'urto.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="attention">
+    <strong>Attenzione:</strong>
+    le particelle alfa sono particelle positive e relativamente
+    pesanti, costituite da due protoni e due neutroni.
+  </div>
+
+</section>
+<section class="card" id="risultati">
+
+  <h2>📊 I risultati dell'esperimento</h2>
+
+  <p>
+    I risultati ottenuti da Rutherford furono sorprendenti e non erano
+    compatibili con il modello di Thomson.
+  </p>
+
+  <div class="table-wrapper">
+
+    <table class="comparison">
+      <thead>
+        <tr>
+          <th>Osservazione</th>
+          <th>Frequenza</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Le particelle attraversano la lamina senza deviazioni</td>
+          <td>Quasi tutte</td>
+        </tr>
+
+        <tr>
+          <td>Le particelle subiscono piccole deviazioni</td>
+          <td>Poche</td>
+        </tr>
+
+        <tr>
+          <td>Le particelle vengono respinte e tornano indietro</td>
+          <td>Pochissime</td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div class="highlight">
+
+    <h3>Osservazione fondamentale</h3>
+
+    <p>
+      La maggior parte delle particelle α attraversava la lamina d'oro
+      come se non incontrasse alcun ostacolo.
+    </p>
+
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Prima osservazione</h3>
+
+      <p>
+        Quasi tutte le particelle attraversano la lamina senza deviazioni.
+      </p>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Seconda osservazione</h3>
+
+      <p>
+        Alcune particelle vengono deviate durante il percorso.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="mini-card" style="margin-top:18px;">
+
+    <h3>Terza osservazione</h3>
+
+    <p>
+      Un numero estremamente ridotto di particelle viene respinto e torna
+      verso la sorgente.
+    </p>
+
+  </div>
+
+  <div class="attention">
+
+    <strong>Perché fu sorprendente?</strong>
+
+    <p>
+      Se il modello di Thomson fosse stato corretto, le particelle α
+      avrebbero dovuto attraversare la lamina quasi senza deviazioni.
+      Il ritorno all'indietro di alcune particelle appariva praticamente
+      impossibile.
+    </p>
+
+  </div>
+
+</section>
+
+  <section class="card" id="conclusioni">
+
+  <h2>🎯 Le conclusioni di Rutherford</h2>
+
+  <p>
+    I risultati dell'esperimento della lamina d'oro portarono
+    Rutherford a formulare una nuova interpretazione della struttura atomica.
+  </p>
+
+  <div class="highlight">
+
+    <h3>Prima conclusione</h3>
+
+    <p>
+      L'atomo è quasi completamente vuoto.
+    </p>
+
+    <p>
+      Poiché la maggior parte delle particelle α attraversa la lamina
+      senza deviazioni, gran parte dello spazio occupato dall'atomo
+      deve essere priva di materia.
+    </p>
+
+  </div>
+
+  <div class="highlight">
+
+    <h3>Seconda conclusione</h3>
+
+    <p>
+      La carica positiva non è distribuita uniformemente.
+    </p>
+
+    <p>
+      Le deviazioni osservate indicano la presenza di una regione
+      molto piccola con elevata concentrazione di carica positiva.
+    </p>
+
+  </div>
+
+  <div class="highlight">
+
+    <h3>Terza conclusione</h3>
+
+    <p>
+      Quasi tutta la massa dell'atomo è concentrata in una regione centrale.
+    </p>
+
+    <p>
+      Solo una struttura molto densa può deviare o respingere
+      particelle α così energetiche.
+    </p>
+
+  </div>
+
+  <div class="attention">
+
+    <strong>Osservazione importante:</strong>
+
+    <p>
+      I risultati dell'esperimento erano incompatibili con il modello di Thomson
+      e dimostravano che l'atomo possiede una struttura interna ben definita.
+    </p>
+
+  </div>
+
+</section>
+
+   <section class="card" id="nucleo">
+
+  <h2>☢️ La scoperta del nucleo atomico</h2>
+
+  <p>
+    Per spiegare i risultati dell'esperimento della lamina d'oro,
+    Rutherford propose un nuovo modello atomico basato sulla presenza
+    di una regione centrale estremamente piccola e molto densa:
+    il nucleo atomico.
+  </p>
+
+  <div class="highlight">
+
+    <h3>Che cos'è il nucleo?</h3>
+
+    <p>
+      Il nucleo è una piccolissima regione situata al centro dell'atomo,
+      nella quale sono concentrate quasi tutta la massa e tutta la carica
+      positiva dell'atomo.
+    </p>
+
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Caratteristiche del nucleo</h3>
+
+      <ul>
+        <li>Dimensioni estremamente ridotte.</li>
+        <li>Densità molto elevata.</li>
+        <li>Carica positiva.</li>
+        <li>Posizione centrale nell'atomo.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Conseguenze</h3>
+
+      <ul>
+        <li>L'atomo è quasi completamente vuoto.</li>
+        <li>La massa non è distribuita uniformemente.</li>
+        <li>Gli elettroni occupano lo spazio attorno al nucleo.</li>
+        <li>Il modello di Thomson viene superato.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="formula">
+    Atomo = Nucleo + spazio quasi completamente vuoto
+  </div>
+
+  <div class="attention">
+
+    <strong>Osservazione importante:</strong>
+
+    <p>
+      Sebbene il nucleo contenga quasi tutta la massa dell'atomo,
+      occupa una porzione piccolissima del suo volume totale.
+    </p>
+
+  </div>
+
+</section>
+
+<section class="card" id="modello-rutherford">
+
+  <h2>⚛️ Il modello nucleare di Rutherford</h2>
+
+  <p>
+    Sulla base dei risultati dell'esperimento della lamina d'oro,
+    Rutherford propose un nuovo modello dell'atomo che sostituì
+    definitivamente il modello di Thomson.
+  </p>
+
+  <div class="highlight">
+
+    <h3>Principi fondamentali</h3>
+
+    <ul>
+      <li>L'atomo è quasi completamente vuoto.</li>
+      <li>La carica positiva è concentrata nel nucleo.</li>
+      <li>Quasi tutta la massa si trova nel nucleo.</li>
+      <li>Gli elettroni occupano lo spazio attorno al nucleo.</li>
+    </ul>
+
+  </div>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Modello di Thomson</h3>
+
+      <ul>
+        <li>Carica positiva distribuita uniformemente.</li>
+        <li>Nessun nucleo centrale.</li>
+        <li>Elettroni immersi nella massa positiva.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Modello di Rutherford</h3>
+
+      <ul>
+        <li>Presenza di un nucleo centrale.</li>
+        <li>Carica positiva concentrata nel nucleo.</li>
+        <li>Elettroni nello spazio circostante.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="formula">
+    ATOMO = NUCLEO + ELETTRONI
+  </div>
+
+  <div class="success">
+
+    <strong>Grande innovazione:</strong>
+
+    <p>
+      Per la prima volta il nucleo veniva riconosciuto come il centro
+      dell'atomo e come sede della quasi totalità della massa atomica.
+    </p>
+
+  </div>
+<section class="card" id="limiti">
+
+  <h2>⚠️ Limiti del modello di Rutherford</h2>
+
+  <p>
+    Il modello nucleare di Rutherford rappresentò una vera rivoluzione
+    nella comprensione della struttura atomica. Tuttavia alcuni problemi
+    fondamentali rimanevano ancora senza risposta.
+  </p>
+
+  <div class="two-columns">
+
+    <div class="mini-card">
+
+      <h3>Successi del modello</h3>
+
+      <ul>
+        <li>Spiega l'esperimento della lamina d'oro.</li>
+        <li>Introduce il nucleo atomico.</li>
+        <li>Descrive la distribuzione della massa nell'atomo.</li>
+        <li>Giustifica la presenza di grandi spazi vuoti nell'atomo.</li>
+      </ul>
+
+    </div>
+
+    <div class="mini-card">
+
+      <h3>Problemi irrisolti</h3>
+
+      <ul>
+        <li>Non spiega la stabilità dell'atomo.</li>
+        <li>Non descrive il comportamento degli elettroni.</li>
+        <li>Non giustifica gli spettri di emissione.</li>
+        <li>Non spiega i livelli energetici.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="highlight">
+
+    <h3>Il problema della stabilità</h3>
+
+    <p>
+      Secondo la fisica classica, una particella carica in movimento
+      attorno al nucleo dovrebbe emettere energia continuamente.
+    </p>
+
+    <p>
+      Perdendo energia, l'elettrone dovrebbe spiraleggiare verso il nucleo
+      fino a collassare su di esso.
+    </p>
+
+    <p>
+      Nella realtà questo non accade: gli atomi sono stabili.
+    </p>
+
+  </div>
+
+  <div class="attention">
+
+    <strong>Domanda aperta:</strong>
+
+    <p>
+      Perché gli elettroni non cadono sul nucleo?
+      La risposta arriverà nel 1913 grazie al modello atomico di Bohr.
+    </p>
+
+  </div>
+
+</section>
+
+
+   <section class="card" id="sintesi">
+
+  <h2>🧠 Sintesi del Modulo 2</h2>
+
+  <ol>
+
+    <li>
+      Dopo la scoperta dell'elettrone, Thomson propose il modello
+      dell'atomo come una sfera positiva contenente elettroni.
+    </li>
+
+    <li>
+      Rutherford mise alla prova questo modello attraverso
+      l'esperimento della lamina d'oro.
+    </li>
+
+    <li>
+      Le particelle α vennero lanciate contro una sottile
+      lamina d'oro.
+    </li>
+
+    <li>
+      La maggior parte delle particelle attraversò la lamina
+      senza deviazioni.
+    </li>
+
+    <li>
+      Alcune particelle subirono deviazioni significative
+      e pochissime tornarono indietro.
+    </li>
+
+    <li>
+      Rutherford concluse che l'atomo è quasi completamente vuoto.
+    </li>
+
+    <li>
+      La massa e la carica positiva risultano concentrate
+      in una piccola regione centrale chiamata nucleo.
+    </li>
+
+    <li>
+      Nacque così il modello nucleare dell'atomo.
+    </li>
+
+    <li>
+      Il modello di Rutherford spiegava la struttura dell'atomo,
+      ma non la stabilità degli elettroni.
+    </li>
+
+    <li>
+      Questo problema porterà alla formulazione del modello
+      atomico di Bohr.
+    </li>
+
+  </ol>
+
+  <div class="success">
+
+    <strong>Conclusione:</strong>
+
+    <p>
+      L'esperimento della lamina d'oro segnò una svolta nella storia
+      della scienza, dimostrando che l'atomo possiede una struttura
+      interna e che quasi tutta la sua massa è concentrata nel nucleo.
+    </p>
+
+  </div>
+
+</section>
+  </main>
+
+  <footer>
+    <p><strong>Scienze Digitali</strong></p>
+    <p>Modulo 2: Rutherford e il modello nucleare</p>
+  </footer>
+</body>
+</html>
