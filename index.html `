@@ -80,31 +80,24 @@ footer{
 
 <section id="capitolo1">
 
-<h2>Capitolo 1 - Teorie Atomiche</h2>
+<h2>⚛️ Capitolo 1 - Teorie Atomiche</h2>
 
 <div class="card">
-<h3>Modulo 1</h3>
-<p>Da Dalton a Thomson</p>
-</div>
 
-<div class="card">
-<h3>Modulo 2</h3>
-<p>Rutherford, nucleo e isotopi</p>
-</div>
+<h3>Dalle teorie atomiche all'energia nucleare</h3>
 
-<div class="card">
-<h3>Modulo 3</h3>
-<p>Radioattività e decadimenti nucleari</p>
-</div>
+<p>
+Percorso completo composto da 6 moduli:
+Dalton, Rutherford, Bohr, radioattività,
+emivita ed energia nucleare.
+</p>
 
-<div class="card">
-<h3>Modulo 4</h3>
-<p>Emivita e datazione radiometrica</p>
-</div>
+<p>
+capitolo1/index.html
+📚 Apri il Capitolo 1
+</a>
+</p>
 
-<div class="card">
-<h3>Modulo 5</h3>
-<p>Energia nucleare: fissione e fusione</p>
 </div>
 
 </section>
