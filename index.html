@@ -1,132 +1,124 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Scienze Digitali</title>
-
-<style>
-
-body{
-    font-family: Arial, sans-serif;
-    margin:0;
-    background:#f4f6f8;
-    color:#333;
-}
-
-header{
-    background:#0d47a1;
-    color:white;
-    text-align:center;
-    padding:40px;
-}
-
-nav{
-    background:#1565c0;
-    padding:15px;
-    text-align:center;
-}
-
-nav a{
-    color:white;
-    margin:15px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-section{
-    max-width:1000px;
-    margin:auto;
-    background:white;
-    padding:30px;
-    margin-top:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-.card{
-    background:#e3f2fd;
-    padding:20px;
-    margin:15px 0;
-    border-radius:8px;
-}
-
-.card a{
-    text-decoration:none;
-    font-weight:bold;
-    color:#0d47a1;
-}
-
-footer{
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-    background:#0d47a1;
-    color:white;
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portale didattico di Chimica, Biologia e Scienze della Terra.">
+  <title>Scienze Digitali</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #0d47a1;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 { margin: 0 0 8px; }
+    header p { margin: 0; }
+    nav {
+      background: #1565c0;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      display: inline-block;
+      color: #fff;
+      margin: 4px 15px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    nav a:hover, nav a:focus { text-decoration: underline; }
+    main { padding-bottom: 20px; }
+    section {
+      max-width: 1000px;
+      margin: 20px auto 0;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,.1);
+    }
+    .card {
+      background: #e3f2fd;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .button {
+      display: inline-block;
+      background: #0d47a1;
+      color: #fff;
+      padding: 11px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .button:hover, .button:focus { background: #083574; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      background: #0d47a1;
+      color: #fff;
+    }
+    @media (max-width: 700px) {
+      header { padding: 28px 16px; }
+      nav a { display: block; margin: 8px 0; }
+      section { margin: 12px 10px 0; padding: 22px; }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
+  <header>
     <h1>Scienze Digitali</h1>
     <p>Portale didattico di Chimica, Biologia e Scienze della Terra</p>
-</header>
+  </header>
 
-<nav>
-    #capitolo1capitolo 1</a>
-    #mappeMappe</a>
-    #quizQuiz</a>
-    #materialimateriali</a>
-</nav>
+  <nav aria-label="Navigazione principale">
+    <a href="#capitolo1">Capitolo 1</a>
+    <a href="#mappe">Mappe</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#materiali">Materiali</a>
+  </nav>
 
-<section id="capitolo1">
-
-    <h2>⚛️ Capitolo 1 - Teorie Atomiche</h2>
-
-    <div class="card">
-
+  <main>
+    <section id="capitolo1">
+      <h2>⚛️ Capitolo 1 - Teorie Atomiche</h2>
+      <div class="card">
         <h3>Dalle teorie atomiche all'energia nucleare</h3>
-
         <p>
-            Percorso completo composto da 6 moduli:
-            Dalton, Rutherford, Bohr, radioattività,
-            emivita ed energia nucleare.
+          Percorso completo composto da 6 moduli: Dalton, Rutherford,
+          Bohr, radioattività, emivita ed energia nucleare.
         </p>
-
         <p>
-            capitolo1/index.html
-                📚 Apri il Capitolo 1
-            </a>
+          <a class="button" href="capitolo1/index.html">📚 Apri il Capitolo 1</a>
         </p>
+      </div>
+    </section>
 
-    </div>
+    <section id="mappe">
+      <h2>Mappe concettuali</h2>
+      <p>Area dedicata alle mappe del capitolo.</p>
+    </section>
 
-</section>
+    <section id="quiz">
+      <h2>Quiz</h2>
+      <p>Area dedicata ai quiz interattivi.</p>
+    </section>
 
-<section id="mappe">
-    <h2>Mappe concettuali</h2>
-    <p>Area dedicata alle mappe del capitolo.</p>
-</section>
+    <section id="materiali">
+      <h2>Materiali scaricabili</h2>
+      <p>PDF, PowerPoint e schede di studio.</p>
+    </section>
+  </main>
 
-<section id="quiz">
-    <h2>Quiz</h2>
-    <p>Area dedicata ai quiz interattivi.</p>
-</section>
-
-<section id="materiali">
-    <h2>Materiali scaricabili</h2>
-    <p>PDF, PowerPoint e schede di studio.</p>
-</section>
-
-<footer>
-    Scienze Digitali - Gregorio Smeraglia
-</footer>
-
+  <footer>Scienze Digitali - Gregorio Smeraglia</footer>
 </body>
 </html>
